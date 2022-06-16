@@ -16,3 +16,4 @@ spring:
 logging:
   level:
     org.hiberate.SQL: debug
+    org.hiberate.type: trace
