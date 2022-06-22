@@ -20,7 +20,6 @@ public class Member {
     @Embedded
     private Address address;
 
-    @OneToMany
-    @JoinColumn(name = "member_id")
+    @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 }
