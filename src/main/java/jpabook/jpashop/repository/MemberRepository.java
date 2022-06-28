@@ -1,17 +1,17 @@
 package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em; //직접 entity 꺼낼필요 없이 spring에서 다 해줌
+    private final EntityManager em; //직접 entity 꺼낼필요 없이 spring에서 다 해줌
 
     public void save(Member member) {
         em.persist(member);
