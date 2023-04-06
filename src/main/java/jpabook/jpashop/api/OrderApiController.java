@@ -40,11 +40,19 @@ public class OrderApiController {
     public List<OrderDto> ordersV2() {
         List<Order> orders = orderRepository.findAllByString(new OrderSearch());
 
-        List<OrderDto> collect = orders.stream()
+        return orders.stream()
                 .map(OrderDto::new)
                 .collect(Collectors.toList());
+    }
 
-        return collect;
+    @GetMapping("/api/v3/orders")
+    public List<OrderDto> ordersV3() {
+        List<Order> orders = orderRepository.findAllWithItem();
+
+        //1:N를 패치조인 하는 순간 패이징이 절.대. 불가
+        return orders.stream()
+                .map(OrderDto::new)
+                .collect(Collectors.toList());
     }
 
     @Getter
